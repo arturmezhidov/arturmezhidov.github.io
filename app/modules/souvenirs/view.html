@@ -1,0 +1,55 @@
+﻿<section class="souvenirs" ng-controller="souvenirsController">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading">Сувенирная продукция</h2>
+				<hr class="primary">
+			</div>
+		</div>
+	</div>
+
+	<div class="tab-controls tab-primary" ng-show="user.isAdmin">
+		<span ng-click="categoriesView()" ng-class="{'active-tab': page == 'categoriesView'}">Главная страница</span>
+		<span ng-click="categoriesEdit()" ng-class="{'active-tab': page == 'categoriesEdit'}">Настройки категорий</span>
+		<span ng-click="souvenirsEdit()" ng-class="{'active-tab': page == 'souvenirsEdit'}">Настройки сувениров</span>
+		<span ng-click="orders()" ng-class="{'active-tab': page == 'orders'}">Список заказов</span>
+	</div>
+
+	<div ng-show="getSelected().length" class="orders-panel" ng-click="showOrders = !showOrders" ng-class="{'show-orders': showOrders }">
+		<i class="fa fa-angle-double-down" aria-hidden="true" ng-show="!showOrders"></i>
+		<i class="fa fa-angle-double-up" aria-hidden="true" ng-show="showOrders"></i>
+		<span>Выбранная продукция</span>
+	</div>
+	<div ng-show="getSelected().length && showOrders" class="orders-list" ng-class="{'show-orders': showOrders }">
+		<div ng-repeat="category in getSelected()">
+			<p class="category">{{category.Name}}</p>
+			<div ng-repeat="souvenir in category.Souvenirs" ng-show="souvenir.Count">
+				<p class="item">{{souvenir.Name}} ({{souvenir.Count}})</p>
+			</div>
+		</div>
+		<button class="btn-order" ng-click="order()">Заказать</button>
+		<button class="btn-order clear" ng-click="cearOrder()">Очистить</button>
+	</div>
+
+	<div ng-switch="page">
+		<div ng-switch-when="categoriesView">
+			<ng-include src="'app/modules/souvenirs/categories-view.html'"></ng-include>
+		</div>
+		<div ng-switch-when="categoriesEdit">
+			<ng-include src="'app/modules/souvenirs/categories-edit.html'"></ng-include>
+		</div>
+		<div ng-switch-when="souvenirsView">
+			<ng-include src="'app/modules/souvenirs/souvenirs-view.html'"></ng-include>
+		</div>
+		<div ng-switch-when="souvenirsEdit">
+			<ng-include src="'app/modules/souvenirs/souvenirs-edit.html'"></ng-include>
+		</div>
+		<div ng-switch-when="orders">
+			<ng-include src="'app/modules/souvenirs/orders.html'"></ng-include>
+		</div>
+	</div>
+
+
+
+</section>

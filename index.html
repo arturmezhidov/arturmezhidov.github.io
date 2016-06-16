@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" id="ng-app" xmlns:ng="http://angularjs.org">
+<head>
+
+	<title>ИМПУЛЬС</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link rel="stylesheet" href="content/css/bootstrap.min.css" type="text/css">
+
+	<!-- Custom Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="content/css/font-awesome.min.css" type="text/css">
+
+	<!-- Plugin CSS -->
+	<link rel="stylesheet" href="content/css/animate.min.css" type="text/css">
+	<link href="content/css/ng-table.min.css" rel="stylesheet" />
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="content/css/main.css" type="text/css">
+
+	<!--<script src="scripts/jquery-1.9.1.min.js"></script>-->
+	<!--<script src="js/jquery.fittext.js"></script>-->
+	<!--<script src="scripts/bootstrap.min.js"></script>-->
+	<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="content/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="content/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="content/css/ng-table.min.css" rel="stylesheet"/>
+
+	<script src="Scripts/modernizr.custom.js"></script>-->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>-->
+
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular-route.js"></script>
+	<script src="scripts/angular-animate.js"></script>
+	<script src="Scripts/angular-messages.min.js"></script>
+	<script src="scripts/ng-file-upload-shim.js"></script>
+	<script src="scripts/ng-file-upload.js"></script>
+	<script src="Scripts/ng-table.min.js"></script>
+
+
+
+	<script src="app/app.js"></script>
+	<script src="app/routing.js"></script>
+	<script src="app/config.js"></script>
+	<script src="app/run.js"></script>
+
+	<script src="app/data-access/data-services.factory.js"></script>
+	<script src="app/data-access/data-context.service.js"></script>
+
+	<script src="app/components/compareTo.js"></script>
+	<script src="app/components/user/userService.js"></script>
+	<script src="app/components/user/register.controller.js"></script>
+	<script src="app/components/user/login.controller.js"></script>
+	<script src="app/components/extensions.js"></script>
+	<script src="app/components/gmap/gmap.js"></script>
+
+	<script src="app/pages/home/controller.js"></script>
+	<script src="app/pages/test/controller.js"></script>
+
+	<script src="app/modules/souvenirs/view-controller.js"></script>
+	<script src="app/modules/souvenirs/categories-edit.controller.js"></script>
+
+	<script src="app/modules/contact-us/view-controller.js"></script>
+
+</head>
+<body id="page-top">
+
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand page-scroll" href="#page-top">ИМПУЛЬС</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="page-scroll" href="#adverts">Реклама</a></li>
+					<li><a class="page-scroll" href="#souvenirs">Сувениры</a></li>
+					<li><a class="page-scroll" href="#services">Сервис</a></li>
+					<li><a class="page-scroll" href="#tipographies">Типография</a></li>
+					<li><a class="page-scroll" href="#photography">Фотоуслуги</a></li>
+					<li><a class="page-scroll" href="#our-works">Наши работы</a></li>
+					<li><a class="page-scroll" href="#about-us">О нас</a></li>
+					<li><a href="" ng-click="user.register()" ng-hide="user.isAuthorize">Регистрация</a></li>
+					<li><a href="" ng-click="user.login()" ng-hide="user.isAuthorize">Войти</a></li>
+					<!--<li><a href="" ng-click="" ng-show="user.isAdmin">Админ</a></li>-->
+					<li><a href="" ng-click="user.logOut();" ng-show="user.isAuthorize">Выйти</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<ng-view></ng-view>
+
+	<div class="impule-dialog" ng-controller="registerController" ng-if="registering">
+		<div class="inner-dialog">
+			<span class="close-dialog" ng-click="close()"></span>
+			<div class="header-dialog">
+				<h2>Регистрация</h2>
+				<p>Зарегистрировавшись в нашей системе Вы получаете возможность совершать онлайн заказы и оставаться в курсе наших событий</p>
+			</div>
+			<form name="registerForm" class="form-dialog">
+
+				<input type="text" class="textbox" name="firstName" ng-model="firstName" required ng-maxlength=128 placeholder="Фамилия" />
+				<div ng-messages="registerForm.firstName.$error" class="errors" ng-show="submiting">
+					<span class="messages" ng-message="required">Поле обязательно для заполнения</span>
+					<span class="messages" ng-message="maxlength">Длина поля не может превышать 128 символов</span>
+				</div>
+
+				<input type="text" class="textbox" name="secondName" ng-model="secondName" required ng-maxlength=128 placeholder="Имя" />
+				<div ng-messages="registerForm.secondName.$error" class="errors" ng-show="submiting">
+					<span class="messages" ng-message="required">Поле обязательно для заполнения</span>
+					<span class="messages" ng-message="maxlength">Длина поля не может превышать 128 символов</span>
+				</div>
+
+				<input type="email" class="textbox" name="email" ng-model="email" required ng-maxlength=128 placeholder="Электронная почта" />
+				<div ng-messages="registerForm.email.$error" class="errors" ng-show="submiting">
+					<span class="messages" ng-message="required">Поле обязательно для заполнения</span>
+					<span class="messages" ng-message="email">Неверный формат адреса</span>
+					<span class="messages" ng-message="maxlength">Длина поля не может превышать 128 символов</span>
+				</div>
+
+				<input type="text" class="textbox" name="phone" ng-model="phone" required ng-minlength=7 ng-maxlength=15 placeholder="Номер телефона" />
+				<div ng-messages="registerForm.phone.$error" class="errors" ng-show="submiting">
+					<span class="messages" ng-message="required">Поле обязательно для заполнения</span>
+					<span class="messages" ng-message="minlength">Длина поля не может быть меньше 7 символов</span>
+					<span class="messages" ng-message="maxlength">Длина поля не может превышать 15 символов</span>
+				</div>
+
+				<input type="password" class="textbox" name="password" ng-model="password" required ng-minlength=5 ng-maxlength=20 placeholder="Пароль" />
+				<div ng-messages="registerForm.password.$error" class="errors" ng-show="submiting">
+					<span class="messages" ng-message="required">Поле обязательно для заполнения</span>
+					<span class="messages" ng-message="minlength">Длина поля не может быть меньше 5 символов</span>
+					<span class="messages" ng-message="maxlength">Длина поля не может превышать 20 символов</span>
+				</div>
+
+				<input type="password" class="textbox" name="confirmPassword" ng-model="confirmPassword" compare-to="password" required placeholder="Повтор пароля" />
+				<div ng-messages="registerForm.confirmPassword.$error" class="errors" ng-show="submiting">
+					<span class="messages" ng-message="required">Поле обязательно для заполнения</span>
+					<div class="messages" ng-show="registerForm.confirmPassword.$error.compareTo"><span>Введенные пароли не совпадают</span></div>
+				</div>
+
+			</form>
+			<div class="controls-dialog">
+				<input type="submit" ng-click="submit(registerForm)" class="btn btn-primary" value="Зарегистрироваться">
+			</div>
+		</div>
+	</div>
+
+	<div class="impule-dialog login" ng-controller="loginController" ng-if="loging">
+		<div class="inner-dialog">
+			
+			<span class="close-dialog" ng-click="close()"></span>
+
+			<div class="header-dialog">
+				<h2>Вход в систему</h2>
+				<p>Вход в нашу систему Вам дает возможность совершать онлайн заказы и оставаться в курсе наших событий</p>
+			</div>
+
+			<form name="loginForm" class="form-dialog">
+
+				<input type="email" class="textbox" name="email" ng-model="email" required ng-maxlength=128 placeholder="Электронная почта"/>
+				<div ng-messages="loginForm.email.$error" class="errors" ng-show="submiting">
+					<span class="messages" ng-message="required">Поле обязательно для заполнения</span>
+					<span class="messages" ng-message="email">Неверный формат адреса</span>
+					<span class="messages" ng-message="maxlength">Длина поля не может превышать 128 символов</span>
+				</div>
+
+				<input type="password" class="textbox" name="password" ng-model="password" required ng-minlength=5 ng-maxlength=20 placeholder="Пароль"/>
+				<div ng-messages="loginForm.password.$error" class="errors" ng-show="submiting">
+					<span class="messages" ng-message="required">Поле обязательно для заполнения</span>
+					<span class="messages" ng-message="minlength">Длина поля не может быть меньше 5 символов</span>
+					<span class="messages" ng-message="maxlength">Длина поля не может превышать 20 символов</span>
+					<span class="messages">{{error}}</span>
+				</div>
+
+			</form>
+
+			<div class="controls-dialog">
+				<input type="submit" ng-click="submit(loginForm)" class="btn btn-default" value="Войти">
+			</div>
+			<div class="register-now">
+				<button class="btn-register-now" ng-click="registerNow()">Новый пользователь? Зарегистрируйся сейчас!</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+	<script src="Scripts/modernizr.custom.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/jquery.fittext.js"></script>
+	<script src="js/wow.min.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="js/creative.js"></script>
+	<script src="Scripts/jquery.dropdown.js"></script>
+
+
+</body>
+
+</html>

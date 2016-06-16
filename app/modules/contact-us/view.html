@@ -1,0 +1,209 @@
+﻿<section class="contact-us" ng-controller="contactusController">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 text-center">
+				<h2 class="section-heading">Как с нами связаться</h2>
+				<hr class="primary">
+			</div>
+		</div>
+		<div class="row contact-forms">
+			<div class="col-md-6">
+				<div class="contact-item">
+					<div class="icon-block">
+						<i class="fa fa-facebook" aria-hidden="true"></i>
+					</div>
+					<div class="text-block">
+						<p class="name">Facebook</p>
+						<p class="text">www.facebook.com</p>
+					</div>
+				</div>
+				<div class="contact-item">
+					<div class="icon-block">
+						<i class="fa fa-odnoklassniki" aria-hidden="true"></i>
+					</div>
+					<div class="text-block">
+						<p class="name">Odnoklassniki</p>
+						<p class="text">www.odnoklassniki.com</p>
+					</div>
+				</div>
+				<div class="contact-item">
+					<div class="icon-block">
+						<i class="fa fa-instagram" aria-hidden="true"></i>
+					</div>
+					<div class="text-block">
+						<p class="name">Instagram</p>
+						<p class="text">impulse095</p>
+					</div>
+				</div>
+				<div class="contact-item">
+					<div class="icon-block">
+						<i class="fa fa-whatsapp" aria-hidden="true"></i>
+					</div>
+					<div class="text-block">
+						<p class="name">Whatsapp</p>
+						<p class="text">8928 888 14 10</p>
+					</div>
+				</div>
+				<div class="contact-item">
+					<div class="icon-block">
+						<i class="fa fa-yahoo" aria-hidden="true"></i>
+					</div>
+					<div class="text-block">
+						<p class="name">Yandex</p>
+						<p class="text">impulse095@yandex.ru</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h2 class="text-center">Форма обратной связи</h2>
+				<span class="input input--madoka">
+					<input class="input__field input__field--madoka" type="text" id="input-31" ng-model="name" />
+					<label class="input__label input__label--madoka" for="input-31">
+						<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+							<path d="m0,0l404,0l0,77l-404,0l0,-77z" />
+						</svg>
+						<span class="input__label-content input__label-content--madoka">Имя</span>
+					</label>
+				</span>
+				<span class="input input--madoka">
+					<input class="input__field input__field--madoka" type="text" id="input-32" ng-model="contacts" />
+					<label class="input__label input__label--madoka" for="input-32">
+						<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+							<path d="m0,0l404,0l0,77l-404,0l0,-77z" />
+						</svg>
+						<span class="input__label-content input__label-content--madoka">Почта или номер телефона</span>
+					</label>
+				</span>
+				<span class="input input--madoka textarea">
+					<textarea class="input__field input__field--madoka" type="text" id="input-33" ng-model="feedbackMessage"></textarea>
+					<label class="input__label input__label--madoka" for="input-33">
+						<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+							<path d="m0,0l404,0l0,77l-404,0l0,-77z" />
+						</svg>
+						<span class="input__label-content input__label-content--madoka">Сообщение</span>
+					</label>
+				</span>
+				<span>
+					<button class="btn btn-primary send" ng-click="send()"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Отправить</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		/*!
+	 * classie - class helper functions
+	 * from bonzo https://github.com/ded/bonzo
+	 *
+	 * classie.has( elem, 'my-class' ) -> true/false
+	 * classie.add( elem, 'my-new-class' )
+	 * classie.remove( elem, 'my-unwanted-class' )
+	 * classie.toggle( elem, 'my-class' )
+	 */
+
+		/*jshint browser: true, strict: true, undef: true */
+		/*global define: false */
+
+		(function (window) {
+
+			'use strict';
+
+			// class helper functions from bonzo https://github.com/ded/bonzo
+
+			function classReg(className) {
+				return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+			}
+
+			// classList support for class management
+			// altho to be fair, the api sucks because it won't accept multiple classes at once
+			var hasClass, addClass, removeClass;
+
+			if ('classList' in document.documentElement) {
+				hasClass = function (elem, c) {
+					return elem.classList.contains(c);
+				};
+				addClass = function (elem, c) {
+					elem.classList.add(c);
+				};
+				removeClass = function (elem, c) {
+					elem.classList.remove(c);
+				};
+			} else {
+				hasClass = function (elem, c) {
+					return classReg(c).test(elem.className);
+				};
+				addClass = function (elem, c) {
+					if (!hasClass(elem, c)) {
+						elem.className = elem.className + ' ' + c;
+					}
+				};
+				removeClass = function (elem, c) {
+					elem.className = elem.className.replace(classReg(c), ' ');
+				};
+			}
+
+			function toggleClass(elem, c) {
+				var fn = hasClass(elem, c) ? removeClass : addClass;
+				fn(elem, c);
+			}
+
+			var classie = {
+				// full names
+				hasClass: hasClass,
+				addClass: addClass,
+				removeClass: removeClass,
+				toggleClass: toggleClass,
+				// short names
+				has: hasClass,
+				add: addClass,
+				remove: removeClass,
+				toggle: toggleClass
+			};
+
+			// transport
+			if (typeof define === 'function' && define.amd) {
+				// AMD
+				define(classie);
+			} else {
+				// browser global
+				window.classie = classie;
+			}
+
+		})(window);
+
+		(function () {
+			// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+			if (!String.prototype.trim) {
+				(function () {
+					// Make sure we trim BOM and NBSP
+					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+					String.prototype.trim = function () {
+						return this.replace(rtrim, '');
+					};
+				})();
+			}
+
+			[].slice.call(document.querySelectorAll('input.input__field')).forEach(function (inputEl) {
+				// in case the input is already filled..
+				if (inputEl.value.trim() !== '') {
+					classie.add(inputEl.parentNode, 'input--filled');
+				}
+
+				// events:
+				inputEl.addEventListener('focus', onInputFocus);
+				inputEl.addEventListener('blur', onInputBlur);
+			});
+
+			function onInputFocus(ev) {
+				classie.add(ev.target.parentNode, 'input--filled');
+			}
+
+			function onInputBlur(ev) {
+				if (ev.target.value.trim() === '') {
+					classie.remove(ev.target.parentNode, 'input--filled');
+				}
+			}
+		})();
+
+	</script>
+</section>

@@ -1,0 +1,19 @@
+﻿<div class="container souvenirs-categories-list">
+
+	<ul class="ch-grid">
+		<li ng-repeat="category in categories">
+			<div class="ch-item" ng-click="selectCategory(category)" style="background-image: url(/images/souvenirs/categories/{{category.Icon}})">
+				<div class="ch-info-wrap">
+					<div class="ch-info">
+						<div class="ch-info-front" style="background-image: url(/images/souvenirs/categories/{{category.Icon}}); background-size: contain;"></div>
+						<div class="ch-info-back">
+							<h3>{{category.Name}}</h3>
+							<p>{{category.Description}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+</div>

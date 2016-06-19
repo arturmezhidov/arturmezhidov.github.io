@@ -2,16 +2,17 @@
 
 .contact-us {
 	width: 100%;
+	min-height: 600px;
 	margin: 0;
 	padding: 50px 20px;
 	background: url('/content/img/bg-contact-us.jpg') no-repeat center center;
 	background-size: cover;
-	color: @theme-primary;
+	color: #FFF;
 	text-shadow: #AAAAAA 0 0 1px;
 
 	.section-heading {
 		font-size: 48px;
-		color: @theme-primary;
+		color: #FFF;
 		text-shadow: #AAAAAA 0 0 1px;
 	}
 
@@ -21,14 +22,15 @@
 		.btn.send {
 			border-radius: 0;
 			background: none;
-			color: #f05f40;
-			border: 2px solid @theme-primary;
+			color: #FFF;
+			border: 2px solid #FFF;
 			font-size: 18px;
 			margin-left: 15px;
 			margin-top: 36px;
+
 			&:hover {
-				background: @theme-primary;
-				color: #FFF;
+				background: #FFF;
+				color: #000;
 			}
 		}
 	}
@@ -64,6 +66,51 @@
 		}
 	}
 
+	.errors {
+		margin-top:20px;
+	}
+	.ng-table th.sortable .sort-indicator:after,
+	.ng-table th.sortable .sort-indicator:before {
+		border-color: #FFF transparent;
+	}
+
+	.table {
+		margin-top: 40px;
+
+		input.input-filter {
+			background: none;
+			color: white;
+		}
+
+		button.approve {
+			background: limegreen;
+			opacity: 1;
+		}
+	}
+
+	.btn-messages, .btn-form {
+		position: absolute;
+		right: 100px;
+		cursor: pointer;
+
+		.fa {
+			font-size: 55px;
+			display: block;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		span {
+			font-size: 12px;
+		}
+
+		&:hover {
+			span {
+				text-decoration: underline;
+			}
+		}
+	}
+
 	.input {
 		position: relative;
 		z-index: 1;
@@ -81,7 +128,7 @@
 		width: 60%;
 		border: none;
 		border-radius: 0;
-		color: #f05f40;
+		color: #FFF;
 		color: #aaa;
 		font-size: 22px;
 		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -98,7 +145,7 @@
 		float: right;
 		padding: 0 1em;
 		width: 40%;
-		color: #f05f40;
+		color: #FFF;
 		font-weight: bold;
 		font-size: 70.25%;
 		-webkit-font-smoothing: antialiased;
@@ -138,14 +185,14 @@
 	.input__field--madoka {
 		width: 100%;
 		background: transparent;
-		color: #f05f40;
+		color: #FFF;
 	}
 
 	.input__label--madoka {
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		color: #f05f40;
+		color: #FFF;
 		text-align: left;
 		cursor: text;
 	}
@@ -164,7 +211,7 @@
 		-webkit-transition: stroke-dashoffset 0.3s;
 		transition: stroke-dashoffset 0.3s;
 		pointer-events: none;
-		stroke: #f05f40;
+		stroke: #FFF;
 		stroke-width: 4px;
 		stroke-dasharray: 962;
 		stroke-dashoffset: 558;
@@ -174,9 +221,11 @@
 		textarea {
 			height: 150px;
 		}
+
 		.graphic--madoka {
 			stroke-width: 2px;
 		}
+
 		.input__label-content {
 			margin-top: 85px;
 		}
